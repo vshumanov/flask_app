@@ -2,11 +2,11 @@ import datetime
 import unittest
 import json
 
-from manage import app
+from manage import flask_app
 
 
-from app.test.base import BaseTestCase
-from app.main.model.contact import Contact
+from application.test.base import BaseTestCase
+from application.main.model.contact import Contact
 
 
 class TestContactAPI(BaseTestCase):

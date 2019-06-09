@@ -1,18 +1,18 @@
 from flask_testing import TestCase
 
-from app.main import db
-from manage import app
+from application.main import db
+from manage import flask_app
 
 
 class BaseTestCase(TestCase):
     """ Base Tests """
 
     def create_app(self):
-        app.config.from_object('app.main.config.TestingConfig')
-        return app
+        flask_app.config.from_object('application.main.config.TestingConfig')
+        return flask_app
 
     def setUp(self):
-        self.test_cl = app.test_client()
+        self.test_cl = flask_app.test_client()
         db.create_all()
         db.session.commit()
 

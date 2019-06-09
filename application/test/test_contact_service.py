@@ -1,11 +1,11 @@
 import datetime
 import unittest
 
-from app.main import db
-from app.main.model.contact import Contact
-from app.main.service.contact_service import (get_all_contacts, get_contact,
-                                              save_new_contact, update_contact, delete_contact)
-from app.test.base import BaseTestCase
+from application.main import db
+from application.main.model.contact import Contact
+from application.main.service.contact_service import (get_all_contacts, get_contact,
+                                                      save_new_contact, update_contact, delete_contact)
+from application.test.base import BaseTestCase
 
 
 class TestContactService(BaseTestCase):

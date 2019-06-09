@@ -12,7 +12,7 @@ class Contact(db.Model):
     # created_at = db.Column(db.DateTime, nullable=False)
 
     email = db.relationship(
-        "Email", back_populates="contact", cascade="all, delete-orphan")
+        "Email", back_populates="contact", cascade="all,delete, delete-orphan")
 
     def update_from_dict(self, **kwargs):
         """ updates the model with dict """

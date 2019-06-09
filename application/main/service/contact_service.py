@@ -1,6 +1,6 @@
-from app.main import db
-from app.main.model.contact import Contact
-from app.main.model.email import Email
+from application.main import db
+from application.main.model.contact import Contact
+from application.main.model.email import Email
 
 import uuid
 
@@ -67,6 +67,12 @@ def delete_contact(username):
         }
         return response_object, 200
     return False, 'contact not found'
+
+
+def delete_all():
+    deleted = Contact.query.delete()
+    db.session.commit()
+    return deleted
 
 
 def save_changes(data):

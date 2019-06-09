@@ -1,6 +1,9 @@
 import os
+from datetime import timedelta
 
 basedir = os.path.abspath(os.path.dirname(__file__))
+# windows and celery dont like eachother
+os.environ.setdefault('FORKED_BY_MULTIPROCESSING', '1')
 
 
 class Config:
@@ -35,5 +38,31 @@ config_by_name = dict(
     test=TestingConfig,
     prod=ProductionConfig
 )
+
+
+# Create Celery beat schedule:
+celery_push_contact_schedule = {
+    'push_contact_15_sec': {
+        'task': 'tasks.periodic_run_push_contact',
+        'schedule': timedelta(seconds=15),
+    },
+    'delete_all_every_minute': {
+        'task': 'tasks.periodic_run_delete_last_minute',
+        'schedule': timedelta(seconds=60)
+    }
+}
+
+
+# TODO add test and prod conf for celery
+class CeleryConfig():
+    beat_schedule = celery_push_contact_schedule
+    broker_url = 'redis://localhost:6379/0'
+    result_backend = 'redis://localhost:6379/0'
+    redis_host = 'localhost'
+    redis_password = ''
+    redis_port = 6379
+    redis_url = 'redis://localhost:6379/0'
+    include = ['application.main.tasks']
+
 
 key = Config.SECRET_KEY

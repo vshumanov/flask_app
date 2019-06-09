@@ -102,3 +102,8 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+celerybeat-schedule.dir
+
+celerybeat-schedule.bak
+celerybeat-schedule.dat
+app/main/*.db
