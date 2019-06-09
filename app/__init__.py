@@ -1,0 +1,15 @@
+from flask_restplus import Api
+from flask import Blueprint
+
+from .main.controller.contact_controller import api as contact_ns
+
+
+blueprint = Blueprint('api', __name__)
+
+api = Api(blueprint,
+          title='FLASK RESTPLUS API BOILER-PLATE',
+          version='1.0',
+          description='a boilerplate for flask restplus web service'
+          )
+
+api.add_namespace(contact_ns, path='/contact')
