@@ -7,10 +7,11 @@
 
     python manage.py run - run app
 
-#swagger 
+# swagger 
     available at localhost:5000/ by default
 
-#celery tasks
+# celery tasks
+
 worker 
     
     celery -A manage.celery_app worker -l info
